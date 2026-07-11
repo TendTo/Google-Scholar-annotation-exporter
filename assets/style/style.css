@@ -1,0 +1,164 @@
+#gs-aex-toolbar {
+  background: #f8f9fa;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 10px 14px;
+  margin: 10px 0 16px 0;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  max-width: 720px;
+}
+#gs-aex-toolbar .gs-aex-grid {
+  display: grid;
+  grid-template-areas:
+    "select_all   cite_style_label    cite_style    reset         export_selected"
+    "deselect_all export_format_label export_format fetch_context export_all"
+    "status       status             status        status        status";
+  column-gap: 24px;
+  row-gap: 8px;
+  align-items: center;
+}
+@media screen and (width < 600px) {
+  #gs-aex-toolbar .gs-aex-grid {
+    grid-template-areas:
+      "select_all          deselect_all"
+      "cite_style_label    cite_style"
+      "export_format_label export_format"
+      "fetch_context       reset"
+      "export_selected     export_all"
+      "status              status";
+    column-gap: 12px;
+  }
+}
+#gs-aex-toolbar .gs-aex-group {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  justify-content: flex-end;
+}
+#gs-aex-toolbar .gs-aex-vgroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 6px;
+}
+#gs-aex-toolbar label {
+  color: #444;
+  font-weight: 500;
+  text-align: right;
+}
+#gs-aex-toolbar select {
+  padding: 5px 8px;
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  font-size: 13px;
+  cursor: pointer;
+}
+#gs-aex-toolbar select:hover {
+  border-color: #aaa;
+}
+#gs-aex-toolbar button {
+  all: unset;
+  padding: 6px 14px;
+  border: 1px solid #dadce0;
+  border-radius: 6px;
+  background: #fff;
+  color: #1a73e8;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  text-align: center;
+}
+#gs-aex-toolbar button:hover:not(:disabled) {
+  background: #eef3fd;
+}
+#gs-aex-toolbar button:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+#gs-aex-toolbar button.gs-aex-primary {
+  background: #1a73e8;
+  color: #fff;
+  border-color: #1a73e8;
+}
+#gs-aex-toolbar button.gs-aex-primary:hover:not(:disabled) {
+  background: #1765cc;
+}
+#gs-aex-toolbar button.gs-aex-stop {
+  background: #d93025;
+  color: #fff;
+  border-color: #d93025;
+}
+#gs-aex-toolbar button.gs-aex-stop:hover:not(:disabled) {
+  background: #b71c1c;
+}
+#gs-aex-toolbar button.gs-aex-start {
+  background: #1a73e8;
+  color: #fff;
+  border-color: #1a73e8;
+}
+#gs-aex-toolbar button.gs-aex-start:hover:not(:disabled) {
+  background: #1765cc;
+}
+
+#gs-aex-status {
+  color: #666;
+  font-size: 12px;
+  min-height: 16px;
+}
+.gs-aex-checkbox-wrap {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  z-index: 5;
+}
+.gs-aex-checkbox-wrap input,
+#gs-aex-fetch-context {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 3px 4px;
+  line-height: 1.24;
+}
+.gs-aex-row {
+  position: relative;
+  padding-left: 28px !important;
+}
+#gs-aex-select-all {
+  grid-area: select_all !important;
+}
+#gs-aex-deselect-all {
+  grid-area: deselect_all !important;
+}
+#gs-aex-cite-style-label {
+  grid-area: cite_style_label !important;
+}
+#gs-aex-cite-style {
+  grid-area: cite_style !important;
+}
+#gs-aex-reset {
+  grid-area: reset !important;
+}
+#gs-aex-export-selected {
+  grid-area: export_selected !important;
+}
+#gs-aex-export-format-label {
+  grid-area: export_format_label !important;
+}
+#gs-aex-export-format {
+  grid-area: export_format !important;
+}
+#gs-aex-export-all {
+  grid-area: export_all !important;
+}
+#gs-aex-fetch-context-group {
+  grid-area: fetch_context !important;
+}
+#gs-aex-status {
+  grid-area: status !important;
+}

@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es2022",
+        "outDir": "dist",
+        "strict": true,
+        "lib": [
+            "es2022",
+            "dom"
+        ],
+        "types": [
+            "chrome-types",
+            "node"
+        ],
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "moduleResolution": "bundler"
+    },
+    "exclude": [
+        "node_modules",
+        "dist",
+        "rolldown.config.ts",
+    ]
+}

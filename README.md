@@ -1,0 +1,143 @@
+# <img src="./assets/icons/icon.svg" width="20" height="20"> Google Scholar annotation exporter
+
+Export your [Google Scholar PDF Reader](https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkoodjbpjheillcadbppiidmhp) annotations (highlights and notes) to a JSON, CSV or Markdown file.
+
+> [!WARNING]
+> This is a beta version of the extension.
+> The format of the exported data may change in future versions.
+> Please report any issues you encounter.
+
+## Installation
+
+1. Install the [Google Scholar PDF Reader](https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkoodjbpjheillcadbppiidmhp) extension.
+2. Install the [Google Scholar annotation exporter](https://chromewebstore.google.com/detail/google-scholar-annotation-expor/ljjlnfclgkldjljjljjljjljjljjljjljj) extension.
+3. Open a PDF in Google Scholar PDF Reader, click the "Export annotations" button in the toolbar, and choose your preferred export format (JSON, CSV or Markdown).
+
+## Permissions
+
+This extension requests two permissions:
+
+- `Host permissions` for `scholar.google.com` and `scholar.google.com.tw`: the extension only runs on Google Scholar pages because it needs to read the paper list, citations, highlights, and notes from the Scholar PDF reader interface.
+  Without access to those pages, it cannot collect the annotation data that users explicitly choose to export.
+- `Storage`: the extension stores user preferences such as export format and citation style, and it also keeps temporary export state while processing multiple pages.
+  This allows the multi-page export flow to continue correctly across navigations and lets the extension remember the user’s settings between sessions and browser (as long as the user has enabled synchronization).
+
+## Output format
+
+The exported annotations will be saved in the chosen format (JSON, CSV or Markdown) with the following structure:
+
+### JSON
+
+```json
+{
+  "extension": "Google Scholar annotation exporter",
+  "extensionHomepage": "https://chromewebstore.google.com/detail/google-scholar-annotation-expor/ljjlnfclgkldjljjljjljjljjljjljjljj",
+  "extensionVersion": "1.0.0",
+  "exportDate": "2023-01-01T12:00:00Z",
+  "numberOfPapers": 1,
+  "numberOfAnnotations": 2,
+  "version": "1.0",
+  "papers": [
+    {
+      "error": "",
+      "captcha": false,
+      "citation": "Author 1, Author 2, 2023. Paper Title. Journal Name.",
+      "metadata": ["Author 1, Author 2", "Journal Name, 2023"],
+      "title": "Paper Title",
+      "authors": "Author 1, Author 2",
+      "journal": "Journal Name",
+      "year": "2023",
+      "link": "https://link.to.paper.pdf",
+      "annotations": [
+        {
+          "highlightText": "indeed.",
+          "note": "This is a note for the highlighted text.",
+          "highlightColor": "Purple",
+          "page": 1,
+          "context": "This is the context of the highlighted text indeed."
+        },
+        {
+          "highlightText": "Another highlighted text.",
+          "note": "",
+          "highlightColor": "Yellow",
+          "page": 2,
+          "context": ""
+        }
+      ]
+    }
+  ]
+}
+```
+
+### CSV
+
+```csv
+Title,Authors,Journal,Year,Link,Citation,Annotations
+Paper Title,"Author 1, Author 2",Journal Name,2023,https://link.to.paper.pdf,"Author 1, Author 2. Paper Title. Journal Name, 2023.","indeed~~~This is a note for the highlighted text.~~~This is the context of the highlighted text indeed.~~~Purple~~~1|||Another highlighted text.~~~~~~~~~Yellow~~~2"
+```
+
+### Markdown
+
+```markdown
+---
+extension: Google Scholar annotation exporter
+extension_homepage: https://chromewebstore.google.com/detail/google-scholar-annotation-expor/ljjlnfclgkldjljjljjljjljjljjljjljj
+extension_version: 1.0
+export_date: 2023-01-01T12:00:00Z
+number_of_papers: 1
+number_of_annotations: 2
+---
+
+# Google Scholar Annotations Export
+
+## Paper Title
+
+| Metadata    | Value                            |
+| ----------- | -------------------------------- |
+| **Authors** | Author 1, Author 2               |
+| **Journal** | Journal Name                     |
+| **Year**    | 2023                             |
+| **Link**    | [PDF](https://link.to.paper.pdf) |
+
+### Annotations
+
+1. | Field         | Value                                               |
+   | ------------- | --------------------------------------------------- |
+   | **Highlight** | indeed.                                             |
+   | **Note**      | This is a note for the highlighted text.            |
+   | **Context**   | This is the context of the highlighted text indeed. |
+   | **Color**     | Purple                                              |
+   | **Page**      | 1                                                   |
+2. | Field         | Value                     |
+   | ------------- | ------------------------- |
+   | **Highlight** | Another highlighted text. |
+   | **Note**      |                           |
+   | **Context**   |                           |
+   | **Color**     | Yellow                    |
+   | **Page**      | 2                         |
+
+---
+```
+
+## Development
+
+To contribute to this project, please follow these steps:
+
+1. Clone the repository (`git clone https://github.com/TendTo/google-scholar-annotation-exporter.git`).
+2. Install dependencies: `npm install` (or `yarn install` or `pnpm install`).
+3. Build the project: `npm run build` (or `yarn build` or `pnpm build`).
+4. Load the extension in Chrome:
+   - Open `chrome://extensions/` in Chrome.
+   - Enable "Developer mode" (toggle switch in the top right corner).
+   - Click "Load unpacked" and select the project root folder (the one containing the `manifest.json` file).
+5. Make changes to the source code in the `src` folder, and rebuild the project as needed.
+   Alternatively, you can use `npm run watch` (or `yarn watch` or `pnpm watch`) to automatically rebuild the project when changes are made.
+   You may need to reload the extension in Chrome after rebuilding.
+
+> [!WARNING]  
+> If you are using the `watch` command, please note that the handlebars templates are not automatically recompiled when changes are made to the `.hbs` files.
+> You will need to run the `build` command again to recompile the templates.
+
+## Alternatives
+
+- [Google Scholar Highlights Export](https://chromewebstore.google.com/detail/google-scholar-highlights/dkolmloddjhhdeobedcgcgohoeoeekpj)

@@ -1,0 +1,142 @@
+{
+  "extension_name": {
+    "message": "Esportatore di annotazioni da Google Scholar",
+    "description": "The name of the extension"
+  },
+  "extension_description": {
+    "message": "Esporta le tue annotazioni del lettore PDF di Google Scholar (evidenziazioni e note) in un file JSON, CSV o Markdown.",
+    "description": "The description of the extension"
+  },
+  "stop_exporting": {
+    "message": "Interrompi l'esportazione",
+    "description": "Button text to stop exporting"
+  },
+  "stop_exporting_title": {
+    "message": "Interrompi il processo di esportazione automatica",
+    "description": "Tooltip for the button to stop exporting"
+  },
+  "export_all_pages": {
+    "message": "Esporta tutto",
+    "description": "Button text to export all pages"
+  },
+  "export_all_pages_title": {
+    "message": "Naviga automaticamente alla prima pagina ed esporta le annotazioni di tutte le pagine in sequenza, passando alla pagina successiva dopo ogni esportazione. Potrebbe richiedere del tempo se hai molte pagine.",
+    "description": "Tooltip for the button to export all pages"
+  },
+  "export_selected": {
+    "message": "Esporta selezionati",
+    "description": "Button text to export selected papers"
+  },
+  "export_selected_title": {
+    "message": "Esporta le annotazioni dagli articoli selezionati sulla pagina corrente in un file",
+    "description": "Tooltip for the button to export selected papers"
+  },
+  "export_stopped": {
+    "message": "Esportazione interrotta.",
+    "description": "Alert message when auto-export is stopped"
+  },
+  "export_all_confirmation": {
+    "message": "Selezionando questa opzione, il sistema navigherà automaticamente alla prima pagina ed esporterà tutte gli articoli in sequenza. Procedere?",
+    "description": "Confirmation message when exporting all pages"
+  },
+  "export_stop_confirmation": {
+    "message": "Sei sicuro di voler interrompere l'esportazione automatica?",
+    "description": "Confirmation message when stopping auto-export"
+  },
+  "select_all": {
+    "message": "Seleziona tutto",
+    "description": "Button text to select all papers"
+  },
+  "select_all_title": {
+    "message": "Seleziona tutti gli articoli sulla pagina corrente",
+    "description": "Tooltip for the button to select all papers"
+  },
+  "deselect_all": {
+    "message": "Deseleziona tutto",
+    "description": "Button text to deselect all papers"
+  },
+  "deselect_all_title": {
+    "message": "Deseleziona tutti gli articoli sulla pagina corrente",
+    "description": "Tooltip for the button to deselect all papers"
+  },
+  "reset": {
+    "message": "Reset",
+    "description": "Button text to reset everything to default"
+  },
+  "reset_title": {
+    "message": "Reimposta tutte le impostazioni ai valori predefiniti e deseleziona tutti gli articoli sulla pagina corrente. Può recuperare uno stato invalido (ad esempio, dopo un aggiornamento nell'estensione).",
+    "description": "Tooltip for the button to reset everything to default"
+  },
+  "fetch_context": {
+    "message": "Includi contesto",
+    "description": "Label for the checkbox to fetch context"
+  },
+  "fetch_context_title": {
+    "message": "Includi l'intera frase in cui si trova l'evidenziazione, per fornire un contesto migliore. Potrebbe non essere disponibile per tutte le evidenziazioni, e rallenta l'esportazione.",
+    "description": "Tooltip for the checkbox to fetch context"
+  },
+  "export_as": {
+    "message": "Esporta come",
+    "description": "Label for export format selection"
+  },
+  "export_as_title": {
+    "message": "Seleziona il formato in cui esportare le annotazioni",
+    "description": "Tooltip for the label of export format selection"
+  },
+  "citation_style": {
+    "message": "Stile di citazione",
+    "description": "Label for citation style selection"
+  },
+  "citation_style_title": {
+    "message": "Seleziona lo stile di citazione per le annotazioni esportate",
+    "description": "Tooltip for the label of citation style selection"
+  },
+  "collect_error_generic": {
+    "message": "Si è verificato un errore durante il processo di esportazione. Controlla la console per ulteriori dettagli.",
+    "description": "Alert message when an error occurs during export"
+  },
+  "collect_error_no_papers_selected": {
+    "message": "Seleziona almeno un articolo.",
+    "description": "Alert message when no papers are selected for export"
+  },
+  "collect_error_captcha": {
+    "message": "Google Scholar ha richiesto un CAPTCHA. Per favore risolvi il CAPTCHA nella pagina e poi aggiorna per riprendere.",
+    "description": "Alert message when Google Scholar requests a CAPTCHA"
+  },
+  "status_exporting": {
+    "message": "Esportazione articoli [$START_COUNT$ - $END_COUNT$]",
+    "description": "Status message when papers are being exported",
+    "placeholders": {
+      "start_count": {
+        "content": "$1",
+        "example": "1"
+      },
+      "end_count": {
+        "content": "$2",
+        "example": "10"
+      }
+    }
+  },
+  "status_captcha": {
+    "message": "CAPTCHA rilevato! Risolvilo e aggiorna la pagina.",
+    "description": "Status message when CAPTCHA is detected"
+  },
+  "status_next_page": {
+    "message": "Passaggio alla pagina successiva...",
+    "description": "Status message when moving to the next page"
+  },
+  "status_exported": {
+    "message": "Esportati $COUNT$ articoli.",
+    "description": "Status message when papers are exported",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "untitled_paper": {
+    "message": "Articolo senza titolo",
+    "description": "Default title for papers without a title"
+  }
+}

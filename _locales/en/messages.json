@@ -1,0 +1,142 @@
+{
+  "extension_name": {
+    "message": "Google Scholar annotation exporter",
+    "description": "The name of the extension"
+  },
+  "extension_description": {
+    "message": "Export your Google Scholar PDF Reader annotations (highlights and notes) to a JSON, CSV or Markdown file.",
+    "description": "The description of the extension"
+  },
+  "stop_exporting": {
+    "message": "Stop exporting",
+    "description": "Button text to stop exporting"
+  },
+  "stop_exporting_title": {
+    "message": "Stop the auto-export process",
+    "description": "Tooltip for the button to stop exporting"
+  },
+  "export_all_pages": {
+    "message": "Export all",
+    "description": "Button text to export all pages"
+  },
+  "export_all_pages_title": {
+    "message": "Automatically navigate to the first page and export the annotations from all the pages in sequence, navigating to the next page after each export. This may take a while if you have many pages.",
+    "description": "Tooltip for the button to export all pages"
+  },
+  "export_selected": {
+    "message": "Export selected",
+    "description": "Button text to export selected papers"
+  },
+  "export_selected_title": {
+    "message": "Export the annotations from the selected papers on the current page to a file",
+    "description": "Tooltip for the button to export selected papers"
+  },
+  "export_stopped": {
+    "message": "Auto-export stopped.",
+    "description": "Alert message when auto-export is stopped"
+  },
+  "export_all_confirmation": {
+    "message": "This will automatically navigate to page 1 and export all pages in sequence. Start?",
+    "description": "Confirmation message when exporting all pages"
+  },
+  "export_stop_confirmation": {
+    "message": "Are you sure you want to stop the auto-export?",
+    "description": "Confirmation message when stopping auto-export"
+  },
+  "select_all": {
+    "message": "Select all",
+    "description": "Button text to select all papers"
+  },
+  "select_all_title": {
+    "message": "Select all papers on the current page",
+    "description": "Tooltip for the button to select all papers"
+  },
+  "deselect_all": {
+    "message": "Deselect all",
+    "description": "Button text to deselect all papers"
+  },
+  "deselect_all_title": {
+    "message": "Deselect all papers on the current page",
+    "description": "Tooltip for the button to deselect all papers"
+  },
+  "reset": {
+    "message": "Reset",
+    "description": "Button text to reset everything to default"
+  },
+  "reset_title": {
+    "message": "Reset all settings to default and deselect all papers on the current page. Can be used to recover from an invalid state (e.g., after a breaking change in the extension).",
+    "description": "Tooltip for the button to reset everything to default"
+  },
+  "fetch_context": {
+    "message": "Fetch context",
+    "description": "Label for the checkbox to fetch context"
+  },
+  "fetch_context_title": {
+    "message": "Include the entire sentence in which the highlight is found, to provide better context. This may not be available for all highlights, and will slow down the export.",
+    "description": "Tooltip for the checkbox to fetch context"
+  },
+  "export_as": {
+    "message": "Export as",
+    "description": "Label for export format selection"
+  },
+  "export_as_title": {
+    "message": "Select the format in which to export the annotations",
+    "description": "Tooltip for the label of export format selection"
+  },
+  "citation_style": {
+    "message": "Citation style",
+    "description": "Label for citation style selection"
+  },
+  "citation_style_title": {
+    "message": "Select the citation style for the exported annotations",
+    "description": "Tooltip for the label of citation style selection"
+  },
+  "collect_error_generic": {
+    "message": "An error occurred during the export process. Please check the console for details.",
+    "description": "Alert message when an error occurs during export"
+  },
+  "collect_error_no_papers_selected": {
+    "message": "Please select at least one paper.",
+    "description": "Alert message when no papers are selected for export"
+  },
+  "collect_error_captcha": {
+    "message": "Google Scholar requested a CAPTCHA. Please solve it on the page and then refresh to resume.",
+    "description": "Alert message when Google Scholar requests a CAPTCHA"
+  },
+  "status_exporting": {
+    "message": "Scraping papers [$START_COUNT$ - $END_COUNT$]",
+    "description": "Status message when papers are being exported",
+    "placeholders": {
+      "start_count": {
+        "content": "$1",
+        "example": "1"
+      },
+      "end_count": {
+        "content": "$2",
+        "example": "10"
+      }
+    }
+  },
+  "status_captcha": {
+    "message": "STOPPED: CAPTCHA Detected! Please solve it and refresh the page.",
+    "description": "Status message when CAPTCHA is detected"
+  },
+  "status_next_page": {
+    "message": "Moving to next page...",
+    "description": "Status message when moving to the next page"
+  },
+  "status_exported": {
+    "message": "Exported $COUNT$ papers.",
+    "description": "Status message when papers are exported",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "untitled_paper": {
+    "message": "Untitled Paper",
+    "description": "Default title for papers without a title"
+  }
+}

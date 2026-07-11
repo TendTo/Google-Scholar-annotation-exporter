@@ -1,0 +1,49 @@
+name: Publish
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Publish webextension
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 24
+      - uses: pnpm/action-setup@v6
+        name: Install pnpm
+        with:
+          version: 11
+          cache: true
+      - name: Install dependencies
+        run: pnpm install
+      - name: Test
+        run: pnpm test
+      - name: Build
+        run: pnpm build
+      - name: Zip
+        run: pnpm zip
+      - name: Upload artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: extension
+          path: extension.zip
+      - name: Create release
+        uses: release-drafter/release-drafter@v7
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          config-name: templates/release-template.yml
+      - name: Upload & release
+        uses: mnao305/chrome-extension-upload@v6.0.0
+        if: startsWith(github.ref, 'refs/tags/')
+        with:
+          file-path: extension.zip
+          extension-id: (extension id)
+          client-id: ${{ secrets.CLIENT_ID }}
+          client-secret: ${{ secrets.CLIENT_SECRET }}
+          refresh-token: ${{ secrets.REFRESH_TOKEN }}

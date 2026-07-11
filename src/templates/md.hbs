@@ -1,0 +1,57 @@
+---
+extension: {{{extension}}}
+extension_homepage: {{{extensionHomepage}}}
+extension_version: {{{extensionVersion}}}
+export_date: {{{exportDate}}}
+number_of_papers: {{{numberOfPapers}}}
+number_of_annotations: {{{numberOfAnnotations}}}
+---
+
+# {{{extension}}}
+
+{{~#each papers}}
+
+## {{{this.title}}}
+
+| Metadata     | Value                |
+| ------------ | -------------------- |
+| **Authors**  | {{{this.authors}}}     |
+| **Journal**  | {{{this.journal}}}     |
+| **Year**     | {{{this.year}}}        |
+| **Link**     | [PDF]({{{this.link}}}) |
+
+{{~#if this.citation}}
+
+### Citation
+
+{{{this.citation}}}
+
+{{/if~}}
+
+{{~#if this.annotations~}}
+
+### Annotations
+
+{{#each this.annotations}}
+1. | Field         | Value                                |
+   | ------------- | ------------------------------------ |
+   | **Highlight** | {{{escapePipe this.highlightText}}}  |
+{{#if this.note}}
+   | **Note**      | {{{escapePipe this.note}}}           |
+{{/if~}}
+{{~#if this.highlightColor}}
+   | **Color**     | {{{escapePipe this.highlightColor}}} |
+{{/if~}}
+{{#if this.context}}
+   | **Context**   | {{{escapePipe this.context}}}        |
+{{/if~}}
+{{#if this.page}}
+   | **Page**      | {{{this.page}}}                      |
+{{/if~}}
+{{/each}}
+
+{{~/if~}}
+
+---
+
+{{~/each~}}

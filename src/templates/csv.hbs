@@ -1,0 +1,9 @@
+title,authors,journal,year,link,citation,annotations
+{{#each papers~}}
+"{{{escapeDoubleQuotes this.title}}}","{{{escapeDoubleQuotes this.authors}}}","{{{escapeDoubleQuotes this.journal}}}","{{{escapeDoubleQuotes this.year}}}","{{{escapeDoubleQuotes this.link}}}","{{{escapeDoubleQuotes this.citation}}}",
+{{~#each this.annotations~}}
+"{{{escapeDoubleQuotes this.highlightText}}}~~~{{{escapeDoubleQuotes this.note}}}~~~{{{escapeDoubleQuotes this.highlightColor}}}~~~{{{escapeDoubleQuotes this.context}}}~~~{{{escapeDoubleQuotes this.page}}}"
+{{~#unless @last~}}|||{{~/unless~}}
+{{/each}}
+
+{{/each}}

@@ -1,0 +1,22 @@
+{
+  "name": "google-scholar-annotation-exporter",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "build": "rolldown -c",
+    "watch": "rolldown -c --watch",
+    "prebuild": "tsc --noEmit",
+    "test": "tsc --noEmit",
+    "zip": "zip -r extension.zip _locales dist/* manifest.json assets README.md LICENSE"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "chrome-types": "^0.1.434",
+    "handlebars": "^4.7.9",
+    "pdfjs-serverless": "^1.2.3",
+    "rolldown": "^1.1.5",
+    "slugify": "^1.6.9",
+    "typescript": "^7.0.2",
+    "unplugin-raw": "^0.7.0"
+  }
+}

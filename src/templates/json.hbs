@@ -1,0 +1,31 @@
+{
+"extension": "{{{extension}}}",
+"extensionHomepage": "{{{extensionHomepage}}}",
+"extensionVersion": "{{{extensionVersion}}}",
+"exportDate": "{{{exportDate}}}",
+"numberOfPapers": "{{{numberOfPapers}}}",
+"numberOfAnnotations": "{{{numberOfAnnotations}}}",
+"papers": [
+{{~#each papers~}}
+{
+"title": "{{{escapeDoubleQuotes this.title}}}",
+"authors": "{{{escapeDoubleQuotes this.authors}}}",
+"journal": "{{{escapeDoubleQuotes this.journal}}}",
+"year": "{{{escapeDoubleQuotes this.year}}}",
+"link": "{{{escapeDoubleQuotes this.link}}}",
+"citation": "{{{escapeDoubleQuotes this.citation}}}",
+"annotations": [
+{{~#each this.annotations~}}
+{
+"highlightText": "{{{escapeDoubleQuotes this.highlightText}}}",
+"note": "{{{escapeDoubleQuotes this.note}}}",
+"highlightColor": "{{{escapeDoubleQuotes this.highlightColor}}}",
+"context": "{{{escapeDoubleQuotes this.context}}}",
+"page": "{{{escapeDoubleQuotes this.page}}}"
+}{{~#unless @last}},{{/unless~}}
+{{~/each~}}
+]
+}{{~#unless @last}},{{/unless~}}
+{{~/each~}}
+]
+}

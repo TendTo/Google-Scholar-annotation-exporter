@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json.schemastore.org/chrome-manifest",
+  "manifest_version": 3,
+  "name": "__MSG_extension_name__",
+  "version": "0.0.1",
+  "description": "__MSG_extension_description__",
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png",
+    "256": "assets/icons/icon-256.png"
+  },
+  "default_locale": "en",
+  "content_scripts": [
+    {
+      "js": ["dist/content.js"],
+      "css": ["assets/style/style.css"],
+      "matches": ["https://scholar.google.com/scholar*", "https://scholar.google.com.tw/scholar*"]
+    }
+  ],
+  "background": {
+    "service_worker": "dist/background.js",
+    "type": "module"
+  },
+  "host_permissions": [
+    "https://scholar.google.com/scholar*",
+    "https://scholar.google.com.tw/scholar*"
+  ],
+  "permissions": ["storage"]
+}
