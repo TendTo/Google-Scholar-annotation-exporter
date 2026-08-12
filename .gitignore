@@ -120,3 +120,6 @@ Temporary Items
 
 # Build handlebars templates
 *hbs.js
+
+# Temp files
+temp.*

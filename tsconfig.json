@@ -19,5 +19,6 @@
         "node_modules",
         "dist",
         "rolldown.config.ts",
+        "**/temp.*"
     ]
 }
