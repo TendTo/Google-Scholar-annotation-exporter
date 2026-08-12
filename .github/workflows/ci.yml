@@ -1,4 +1,4 @@
-name: Publish
+name: CI
 
 on:
   push:
@@ -7,9 +7,7 @@ on:
 
 jobs:
   build:
-    name: Publish webextension
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v7
       - uses: actions/setup-node@v6
@@ -33,17 +31,27 @@ jobs:
         with:
           name: extension
           path: extension.zip
+
+  deploy:
+    needs: build
+    environment: publish
+    if: startsWith(github.ref, 'refs/tags/')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: extension
       - name: Create release
         uses: release-drafter/release-drafter@v7
-        if: startsWith(github.ref, 'refs/tags/')
         with:
           config-name: templates/release-template.yml
-      - name: Upload & release
-        uses: mnao305/chrome-extension-upload@v6.0.0
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Publish Chrome Extension
+        uses: wdzeng/chrome-extension@src-v2.0.0
         with:
-          file-path: extension.zip
-          extension-id: (extension id)
+          publisher-id: 4ec42777-23b5-48b7-9868-2aaee3915064
+          extension-id: dkcipnihgbegpammhgkobheodoknplma
           client-id: ${{ secrets.CLIENT_ID }}
           client-secret: ${{ secrets.CLIENT_SECRET }}
           refresh-token: ${{ secrets.REFRESH_TOKEN }}
+          zip-path: extension.zip

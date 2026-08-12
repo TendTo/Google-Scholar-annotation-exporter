@@ -28,5 +28,3 @@ header: |
   - Open the Chrome extensions page (`chrome://extensions/`)
   - Enable "Developer mode" in the top right corner
   - Click "Load unpacked" and select the cloned repository folder (the one containing the `manifest.json` file)
-
-  $CHANGELOG
