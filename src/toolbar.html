@@ -24,5 +24,24 @@
     <button id="gs-aex-export-all" type="button" title="{{export_all_pages_title}}"
         aria-label="{{export_all_pages_title}}">{{export_all_pages}}</button>
     <!-- Third Row -->
+    <button id="gs-aex-advanced-options" type="button" title="{{advanced_options_title}}"
+        aria-label="{{advanced_options_title}}">{{advanced_options}}</button>
+    <!-- Fourth Row -->
     <div id="gs-aex-status"></div>
 </div>
+
+<dialog id="gs-aex-advanced-modal" aria-labelledby="gs-aex-advanced-modal-title">
+    <form method="dialog" class="gs-aex-modal-content">
+        <h3 id="gs-aex-advanced-modal-title">{{advanced_options}}</h3>
+
+        <label for="gs-aex-export-template">{{custom_template}}</label>
+        <p class="gs-aex-modal-help">{{advanced_options_help}}</p>
+        <textarea id="gs-aex-export-template" rows="12" spellcheck="false"
+            placeholder="{{custom_template_placeholder}}"></textarea>
+
+        <div class="gs-aex-modal-actions">
+            <button id="gs-aex-cancel-advanced" type="button">{{cancel}}</button>
+            <button id="gs-aex-save-advanced" class="gs-aex-primary" type="button">{{save}}</button>
+        </div>
+    </form>
+</dialog>

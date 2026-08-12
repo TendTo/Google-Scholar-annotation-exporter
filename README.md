@@ -171,6 +171,48 @@ number_of_annotations: 2
 ---
 ```
 
+### Custom templates
+
+Under the hood, Google Scholar annotation exporter uses [Handlebars](https://handlebarsjs.com/) templates to generate the output in the selected format.
+You can customize the output by providing your own Handlebars template in the "Advanced options" modal.
+The default templates are located in the [`src/templates`](./src/templates) folder, and you can use them as a starting point for your own custom templates.
+For more information on how to use Handlebars templates, please refer to the [Handlebars documentation](https://handlebarsjs.com/guide/).
+
+The context exposed to the templates includes the following properties:
+
+```typescript
+type Context = {
+  extension: string;
+  extensionHomepage: string;
+  extensionVersion: string;
+  exportDate: string;
+  numberOfPapers: number;
+  numberOfAnnotations: number;
+  papers: Paper[];
+};
+
+type Paper = {
+  error: string;
+  captcha: boolean;
+  title: string;
+  authors: string;
+  year: string;
+  link: string;
+  citation: string;
+  metadata: string[];
+  annotations: Annotation[];
+  journal: string;
+};
+
+export type Annotation = {
+  highlightText: string;
+  note: string;
+  highlightColor: string;
+  context: string;
+  page: number;
+};
+```
+
 ## Development
 
 To contribute to this project, please follow these steps:
@@ -191,7 +233,25 @@ To contribute to this project, please follow these steps:
 The output produced by this extension is generated using [Handlebars](https://handlebarsjs.com/) templates.
 The templates are located in the `src/templates` folder, and they are compiled into JavaScript files during the build process.
 This is due to the fact that Chrome extensions are [restricted](https://developer.chrome.com/docs/extensions/how-to/security/sandboxing-eval) from using `eval()` and similar functionalities, which are used by Handlebars to compile templates at runtime.
-When the extension is built, the templates are precompiled into JavaScript files that can be used directly by the extension without requiring runtime compilation.
+When the extension is built, the templates are precompiled into JavaScript files that can be used directly by the extension without requiring runtime compilation.  
+There is a cumbersome way to use Handlebars templates in a Chrome extension for people who do not want to build the extension, which has been made available in the "Advanced options": it requires to relay the request from the content script, to the background script, to an offscreen script, and finally to a sandboxed iframe.
+
+```mermaid
+sequenceDiagram
+participant Content
+participant Background
+
+Content ->>+ Background: Template request
+create participant Offscreen
+Background ->> Offscreen: Template request
+create participant Sandbox
+Offscreen ->> Sandbox: Template request
+destroy Sandbox
+Sandbox -->> Offscreen: Template output
+destroy Offscreen
+Offscreen -->> Background: Template output
+Background -->>- Content: Template output
+```
 
 > [!WARNING]  
 > If you are using the `watch` command, please note that the handlebars templates are not automatically recompiled when changes are made to the `.hbs` files.

@@ -20,6 +20,7 @@ const selectors = [
   "#gs-aex-select-all",
   "#gs-aex-deselect-all",
   "#gs-aex-reset",
+  "#gs-aex-advanced-options",
   "#gs-hlt-style",
   "#gs-hlt-format",
   "#gs-aex-export-all.gs-aex-start",
@@ -139,6 +140,31 @@ export async function updateUI() {
     updateConfiguration({ exportFormat: e.target.value as Configuration["exportFormat"] });
   });
 
+  // Advanced Options Modal
+  const advancedButton = toolBar.querySelector<HTMLButtonElement>("#gs-aex-advanced-options")!;
+  const advancedModal = toolBar.querySelector<HTMLDialogElement>("#gs-aex-advanced-modal")!;
+  const exportTemplateTextarea =
+    toolBar.querySelector<HTMLTextAreaElement>("#gs-aex-export-template")!;
+  const saveAdvancedButton = toolBar.querySelector<HTMLButtonElement>("#gs-aex-save-advanced")!;
+  const cancelAdvancedButton = toolBar.querySelector<HTMLButtonElement>("#gs-aex-cancel-advanced")!;
+
+  exportTemplateTextarea.value = configuration.customExportTemplate;
+
+  advancedButton.addEventListener("click", async () => {
+    const configuration = await loadConfiguration();
+    exportTemplateTextarea.value = configuration.customExportTemplate;
+    advancedModal.showModal();
+  });
+
+  saveAdvancedButton.addEventListener("click", () => {
+    updateConfiguration({ customExportTemplate: exportTemplateTextarea.value });
+    advancedModal.close();
+  });
+
+  cancelAdvancedButton.addEventListener("click", () => {
+    advancedModal.close();
+  });
+
   // Export Selected Button
   toolBar.querySelector("#gs-aex-export-selected")?.addEventListener("click", async () => {
     resetData();
@@ -189,6 +215,7 @@ export async function updateUI() {
     styleSelect.value = newConfiguration.citationStyle;
     formatSelect.value = newConfiguration.exportFormat;
     fetchContextCheckbox.checked = newConfiguration.fetchContext;
+    exportTemplateTextarea.value = newConfiguration.customExportTemplate;
   });
   document.addEventListener(ExportEnd.eventName, () => {
     resetState();

@@ -22,9 +22,12 @@
     "service_worker": "dist/background.js",
     "type": "module"
   },
+  "sandbox": {
+    "pages": ["assets/html/sandbox.html"]
+  },
   "host_permissions": [
     "https://scholar.google.com/scholar*",
     "https://scholar.google.com.tw/scholar*"
   ],
-  "permissions": ["storage"]
+  "permissions": ["storage", "offscreen"]
 }

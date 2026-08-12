@@ -22,5 +22,21 @@ export default defineConfig((config) => {
       },
       plugins: [Raw()],
     },
+    {
+      input: "src/sandbox.ts",
+      output: {
+        dir: "dist",
+        minify: minify,
+      },
+      plugins: [Raw()],
+    },
+    {
+      input: "src/offscreen.ts",
+      output: {
+        dir: "dist",
+        minify: minify,
+      },
+      plugins: [Raw()],
+    },
   ];
 });

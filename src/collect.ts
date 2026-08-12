@@ -194,7 +194,7 @@ export async function batchCollectImpl(isMultiPage = false) {
   }
 
   const exporter = Exporter.getExporter(exportFormat);
-  exporter.download(papers);
+  await exporter.download(papers);
   resetData(); // Reset data after export
   statusUI.textContent = i18n("status_exported", `${papers.length}`);
 

@@ -1,9 +1,11 @@
-import type { Format, Paper } from "./data";
+import { loadConfiguration, type Format, type Paper } from "./data";
 import Handlebars from "handlebars/runtime";
 import MarkdownTemplate from "./templates/md.hbs.js";
 import JsonTemplate from "./templates/json.hbs.js";
 import CsvTemplate from "./templates/csv.hbs.js";
 import LaTexTemplate from "./templates/tex.hbs.js";
+import { ProcessTemplateRequest, sendMessage } from "./message";
+import { i18n } from "./i18";
 
 function escapeDoubleQuotes(text: string) {
   if (typeof text !== "string") return text;
@@ -19,17 +21,20 @@ function escapeTex(text: string) {
   if (typeof text !== "string") return text;
   const specialChars = {
     "#": "\\#",
-    "$": "\\$",
+    $: "\\$",
     "%": "\\%",
     "&": "\\&",
-    "_": "\\_",
+    _: "\\_",
     "{": "\\{",
     "}": "\\}",
     "~": "\\textasciitilde{}",
     "^": "\\textasciicircum{}",
     "\\": "\\textbackslash{}",
   };
-  return text.replace(/[#\$%&_{}~^\\]/g, (match) => specialChars[match as keyof typeof specialChars]);
+  return text.replace(
+    /[#\$%&_{}~^\\]/g,
+    (match) => specialChars[match as keyof typeof specialChars],
+  );
 }
 
 export abstract class Exporter {
@@ -43,13 +48,15 @@ export abstract class Exporter {
         return new CSVExporter();
       case "LaTex":
         return new LaTexExporter();
+      case "Custom":
+        return new CustomExporter();
       default:
         throw new Error(`Unsupported export format: ${format}`);
     }
   }
 
-  export(papers: Paper[]): string {
-    return this.template({
+  getContext(papers: Paper[]): Record<string, any> {
+    return {
       extension: chrome.runtime.getManifest().name,
       extensionHomepage: chrome.runtime.getManifest().homepage_url,
       extensionVersion: chrome.runtime.getManifest().version,
@@ -57,14 +64,19 @@ export abstract class Exporter {
       numberOfPapers: papers.length,
       numberOfAnnotations: papers.reduce((sum, paper) => sum + paper.annotations.length, 0),
       papers,
-    });
+    };
   }
+
+  async export(papers: Paper[]): Promise<string> {
+    return this.template(this.getContext(papers));
+  }
+
   abstract get fileExtension(): string;
   abstract get mimeType(): string;
   abstract get template(): Handlebars.TemplateDelegate;
 
-  download(content: string | Paper[], filename: string = "") {
-    if (Array.isArray(content)) content = this.export(content);
+  async download(content: string | Paper[], filename: string = "") {
+    if (Array.isArray(content)) content = await this.export(content);
 
     if (!content) {
       console.warn("No content to export. Aborting download.");
@@ -165,8 +177,42 @@ class LaTexExporter extends Exporter {
   get fileExtension(): string {
     return "tex";
   }
-  
+
   get mimeType(): string {
     return "application/x-tex";
+  }
+}
+
+class CustomExporter extends Exporter {
+  get template(): Handlebars.TemplateDelegate {
+    throw new Error("CustomExporter template cannot be used directly.");
+  }
+
+  async export(papers: Paper[]): Promise<string> {
+    const { customExportTemplate } = await loadConfiguration();
+    if (!customExportTemplate) {
+      alert(i18n("export_no_template"));
+      return "";
+    }
+    const {
+      data: { error, result },
+    } = await sendMessage<ProcessTemplateRequest>({
+      data: { template: customExportTemplate, context: this.getContext(papers) },
+      type: "processTemplate",
+    });
+
+    if (error) {
+      console.error("Error processing template:", error);
+      return "";
+    }
+    return result;
+  }
+
+  get fileExtension(): string {
+    return "txt";
+  }
+
+  get mimeType(): string {
+    return "text/plain";
   }
 }

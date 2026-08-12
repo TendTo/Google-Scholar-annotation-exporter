@@ -43,6 +43,10 @@
     "message": "Sei sicuro di voler interrompere l'esportazione automatica?",
     "description": "Confirmation message when stopping auto-export"
   },
+  "export_no_template": {
+    "message": "Nessun template di esportazione personalizzato è impostato. Impostane uno nelle opzioni avanzate.",
+    "description": "Alert message when no custom export template is set"
+  },
   "select_all": {
     "message": "Seleziona tutto",
     "description": "Button text to select all papers"
@@ -90,6 +94,34 @@
   "citation_style_title": {
     "message": "Seleziona lo stile di citazione per le annotazioni esportate",
     "description": "Tooltip for the label of citation style selection"
+  },
+  "advanced_options": {
+    "message": "Opzioni avanzate",
+    "description": "Button text to open advanced export options"
+  },
+  "advanced_options_title": {
+    "message": "Apri le opzioni avanzate",
+    "description": "Tooltip for the advanced options button"
+  },
+  "advanced_options_help": {
+    "message": "Usa un template <a href=\"https://handlebarsjs.com/\" target=\"_blank\">Handlebars</a> personalizzato per controllare l'output di esportazione. La lista di tutti i campi esposti è indicata <a href=\"https://github.com/TendTo/Google-Scholar-annotation-exporter#custom-templates\" target=\"_blank\">qua</a>, così come i <a href=\"https://github.com/TendTo/Google-Scholar-annotation-exporter/tree/main/src/templates\" target=\"_blank\">template di default</a>.",
+    "description": "Helper text shown in the advanced options modal"
+  },
+  "custom_template": {
+    "message": "Template di esportazione personalizzato",
+    "description": "Label for the custom export template textarea"
+  },
+  "custom_template_placeholder": {
+    "message": "Esempio: {{#each papers}}- {{title}} ({{year}})\\n{{/each}}",
+    "description": "Placeholder text for the custom export template textarea"
+  },
+  "save": {
+    "message": "Salva",
+    "description": "Button text to save advanced options"
+  },
+  "cancel": {
+    "message": "Annulla",
+    "description": "Button text to cancel advanced options changes"
   },
   "collect_error_generic": {
     "message": "Si è verificato un errore durante il processo di esportazione. Controlla la console per ulteriori dettagli.",

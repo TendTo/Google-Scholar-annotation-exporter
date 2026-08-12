@@ -13,6 +13,7 @@
   grid-template-areas:
     "select_all   cite_style_label    cite_style    reset         export_selected"
     "deselect_all export_format_label export_format fetch_context export_all"
+    "advanced_options advanced_options advanced_options advanced_options advanced_options"
     "status       status             status        status        status";
   column-gap: 24px;
   row-gap: 8px;
@@ -26,6 +27,7 @@
       "export_format_label export_format"
       "fetch_context       reset"
       "export_selected     export_all"
+      "advanced_options    advanced_options"
       "status              status";
     column-gap: 12px;
   }
@@ -42,7 +44,7 @@
   align-items: flex-start;
   gap: 6px;
 }
-#gs-aex-toolbar label {
+#gs-aex-toolbar #gs-aex-grid label {
   color: #444;
   font-weight: 500;
   text-align: right;
@@ -156,9 +158,66 @@
 #gs-aex-export-all {
   grid-area: export_all !important;
 }
+#gs-aex-advanced-options {
+  grid-area: advanced_options !important;
+}
 #gs-aex-fetch-context-group {
   grid-area: fetch_context !important;
 }
 #gs-aex-status {
   grid-area: status !important;
+}
+
+#gs-aex-advanced-modal {
+  border: 1px solid #dadce0;
+  border-radius: 10px;
+  padding: 0;
+  width: min(760px, 92vw);
+  max-height: 90vh;
+}
+
+#gs-aex-advanced-modal::backdrop {
+  background: rgba(0, 0, 0, 0.35);
+}
+
+#gs-aex-toolbar .gs-aex-modal-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px;
+}
+
+#gs-aex-toolbar .gs-aex-modal-content h3 {
+  margin: 0;
+  color: #1f1f1f;
+}
+
+#gs-aex-toolbar .gs-aex-modal-help {
+  margin: 0;
+  color: #5f6368;
+  font-size: 12px;
+}
+
+#gs-aex-export-template {
+  width: 100%;
+  min-height: 220px;
+  resize: vertical;
+  box-sizing: border-box;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  padding: 10px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+#gs-aex-export-template:focus {
+  outline: 2px solid #d2e3fc;
+  border-color: #1a73e8;
+}
+
+#gs-aex-toolbar .gs-aex-modal-actions {
+  display: flex;
+  gap: 8px;
+  justify-content: flex-end;
 }

@@ -5,7 +5,7 @@ const DATA_KEY = "gs-aex-data";
 const STATE_KEY = "gs-aex-state";
 
 export const CITATION_STYLES = ["MLA", "APA", "Chicago", "Harvard", "Vancouver"] as const;
-export const EXPORT_FORMATS = ["CSV", "JSON", "LaTex", "Markdown"] as const;
+export const EXPORT_FORMATS = ["CSV", "JSON", "LaTex", "Markdown", "Custom"] as const;
 export const COLOR_MAP = {
   "-1": "",
   "1": "Yellow",
@@ -24,6 +24,7 @@ export type Configuration = {
   citationStyle: CitationStyle;
   exportFormat: Format;
   fetchContext: boolean;
+  customExportTemplate: string;
 };
 
 export type State = {
@@ -60,6 +61,7 @@ const DEFAULT_CONFIGURATION: Configuration = {
   citationStyle: "MLA",
   exportFormat: "Markdown",
   fetchContext: false,
+  customExportTemplate: "",
 } as const;
 
 const DEFAULT_STATE: State = {

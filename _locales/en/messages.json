@@ -43,6 +43,10 @@
     "message": "Are you sure you want to stop the auto-export?",
     "description": "Confirmation message when stopping auto-export"
   },
+  "export_no_template": {
+    "message": "No custom export template is set. Please set one in the advanced options.",
+    "description": "Alert message when no custom export template is set"
+  },
   "select_all": {
     "message": "Select all",
     "description": "Button text to select all papers"
@@ -90,6 +94,34 @@
   "citation_style_title": {
     "message": "Select the citation style for the exported annotations",
     "description": "Tooltip for the label of citation style selection"
+  },
+  "advanced_options": {
+    "message": "Advanced options",
+    "description": "Button text to open advanced export options"
+  },
+  "advanced_options_title": {
+    "message": "Open advanced options",
+    "description": "Tooltip for the advanced options button"
+  },
+  "advanced_options_help": {
+    "message": "Use a custom <a href=\"https://handlebarsjs.com/\" target=\"_blank\">Handlebars</a> template to control the export output. The list of available fields can be found <a href=\"https://github.com/TendTo/Google-Scholar-annotation-exporter#custom-templates\" target=\"_blank\">here</a>, alongside the <a href=\"https://github.com/TendTo/Google-Scholar-annotation-exporter/tree/main/src/templates\" target=\"_blank\">default templates</a>.",
+    "description": "Helper text shown in the advanced options modal"
+  },
+  "custom_template": {
+    "message": "Custom export template",
+    "description": "Label for the custom export template textarea"
+  },
+  "custom_template_placeholder": {
+    "message": "Example: {{#each papers}}- {{title}} ({{year}})\\n{{/each}}",
+    "description": "Placeholder text for the custom export template textarea"
+  },
+  "save": {
+    "message": "Save",
+    "description": "Button text to save advanced options"
+  },
+  "cancel": {
+    "message": "Cancel",
+    "description": "Button text to cancel advanced options changes"
   },
   "collect_error_generic": {
     "message": "An error occurred during the export process. Please check the console for details.",
