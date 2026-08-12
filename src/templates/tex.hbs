@@ -1,0 +1,68 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+\title{ {{{escapeTex extension}}} }
+\date{ {{{escapeTex exportDate}}} }
+\author{ {{{escapeTex extension}}} }
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+{{~#each papers}}
+
+\section{ {{{escapeTex this.title}}} }
+
+\begin{center}
+  \begin{tabular}{||l l||}
+    \hline
+    \textbf{Field}   & \textbf{Value}                          \\ [0.5ex]
+    \hline\hline
+    \textbf{Authors} & {{{escapeTex this.authors}}}            \\
+    \hline
+    \textbf{Journal} & {{{escapeTex this.journal}}}            \\
+    \hline
+    \textbf{Year}    & {{{escapeTex this.year}}}               \\
+    \hline
+    \textbf{Link}    & \href{ {{{this.link}}} }{PDF} \\
+    \hline
+  \end{tabular}
+\end{center}
+
+{{~#if this.citation}}
+
+\subsection{Citation}
+
+{{{escapeTex this.citation}}}
+
+{{/if~}}
+
+{{~#if this.annotations~}}
+
+\subsection{Annotations}
+
+{{#each this.annotations}}
+\subsubsection{ {{{escapeTex this.highlightText}}} }
+\begin{itemize}
+  {{#if this.note}}
+  \item \textbf{Note}: {{{escapeTex this.note}}}
+  {{/if~}}
+  {{~#if this.highlightColor}}
+  \item \textbf{Color}: {{{escapeTex this.highlightColor}}}
+  {{/if~}}
+  {{#if this.context}}
+  \item \textbf{Context}: {{{escapeTex this.context}}}
+  {{/if~}}
+  {{#if this.page}}
+  \item \textbf{Page}: {{{escapeTex this.page}}}
+  {{/if~}}
+\end{itemize}
+{{/each~}}
+
+{{~/if~}}
+
+{{~/each}}
+
+\end{document}

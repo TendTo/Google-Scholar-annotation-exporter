@@ -3,6 +3,7 @@ import Handlebars from "handlebars/runtime";
 import MarkdownTemplate from "./templates/md.hbs.js";
 import JsonTemplate from "./templates/json.hbs.js";
 import CsvTemplate from "./templates/csv.hbs.js";
+import LaTexTemplate from "./templates/tex.hbs.js";
 
 function escapeDoubleQuotes(text: string) {
   if (typeof text !== "string") return text;
@@ -14,6 +15,23 @@ function escapePipe(text: string) {
   return text.replaceAll("|", "\\|");
 }
 
+function escapeTex(text: string) {
+  if (typeof text !== "string") return text;
+  const specialChars = {
+    "#": "\\#",
+    "$": "\\$",
+    "%": "\\%",
+    "&": "\\&",
+    "_": "\\_",
+    "{": "\\{",
+    "}": "\\}",
+    "~": "\\textasciitilde{}",
+    "^": "\\textasciicircum{}",
+    "\\": "\\textbackslash{}",
+  };
+  return text.replace(/[#\$%&_{}~^\\]/g, (match) => specialChars[match as keyof typeof specialChars]);
+}
+
 export abstract class Exporter {
   static getExporter(format: Format): Exporter {
     switch (format) {
@@ -23,6 +41,8 @@ export abstract class Exporter {
         return new JSONExporter();
       case "CSV":
         return new CSVExporter();
+      case "LaTex":
+        return new LaTexExporter();
       default:
         throw new Error(`Unsupported export format: ${format}`);
     }
@@ -66,14 +86,6 @@ export abstract class Exporter {
 class MarkdownExporter extends Exporter {
   private static _template: Handlebars.TemplateDelegate | null = null;
 
-  get fileExtension(): string {
-    return "md";
-  }
-
-  get mimeType(): string {
-    return "text/markdown";
-  }
-
   get template(): Handlebars.TemplateDelegate {
     if (!MarkdownExporter._template) {
       MarkdownExporter._template = Handlebars.template(MarkdownTemplate);
@@ -82,6 +94,14 @@ class MarkdownExporter extends Exporter {
       }
     }
     return MarkdownExporter._template;
+  }
+
+  get fileExtension(): string {
+    return "md";
+  }
+
+  get mimeType(): string {
+    return "text/markdown";
   }
 }
 
@@ -126,5 +146,27 @@ class CSVExporter extends Exporter {
 
   get mimeType(): string {
     return "text/csv";
+  }
+}
+
+class LaTexExporter extends Exporter {
+  private static _template: Handlebars.TemplateDelegate | null = null;
+
+  get template(): Handlebars.TemplateDelegate {
+    if (!LaTexExporter._template) {
+      LaTexExporter._template = Handlebars.template(LaTexTemplate);
+      if (!("escapeTex" in Handlebars.helpers)) {
+        Handlebars.registerHelper("escapeTex", escapeTex);
+      }
+    }
+    return LaTexExporter._template;
+  }
+
+  get fileExtension(): string {
+    return "tex";
+  }
+  
+  get mimeType(): string {
+    return "application/x-tex";
   }
 }

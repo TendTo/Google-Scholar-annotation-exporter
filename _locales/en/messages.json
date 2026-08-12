@@ -4,7 +4,7 @@
     "description": "The name of the extension"
   },
   "extension_description": {
-    "message": "Export your Google Scholar PDF Reader annotations (highlights and notes) to a JSON, CSV or Markdown file.",
+    "message": "Export your Google Scholar PDF Reader annotations (highlights and notes) to a JSON, CSV, LaTeX or Markdown file.",
     "description": "The description of the extension"
   },
   "stop_exporting": {

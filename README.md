@@ -1,17 +1,16 @@
 # <img src="./assets/icons/icon.svg" width="20" height="20"> Google Scholar annotation exporter
 
-Export your [Google Scholar PDF Reader](https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkoodjbpjheillcadbppiidmhp) annotations (highlights and notes) to a JSON, CSV or Markdown file.
+Export your [Google Scholar PDF Reader](https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkoodjbpjheillcadbppiidmhp) annotations (highlights and notes) to a JSON, CSV, LaTeX or Markdown file.
 
-> [!WARNING]
-> This is a beta version of the extension.
+> [!NOTE]  
 > The format of the exported data may change in future versions.
 > Please report any issues you encounter.
 
 ## Installation
 
 1. Install the [Google Scholar PDF Reader](https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkoodjbpjheillcadbppiidmhp) extension.
-2. Install the [Google Scholar annotation exporter](https://chromewebstore.google.com/detail/google-scholar-annotation-expor/ljjlnfclgkldjljjljjljjljjljjljjljj) extension.
-3. Open a PDF in Google Scholar PDF Reader, click the "Export annotations" button in the toolbar, and choose your preferred export format (JSON, CSV or Markdown).
+2. Install the [Google Scholar annotation exporter](https://chromewebstore.google.com/detail/google-scholar-annotation/dkcipnihgbegpammhgkobheodoknplma) extension.
+3. Open a PDF in Google Scholar PDF Reader, click the "Export annotations" button in the toolbar, and choose your preferred export format.
 
 ## Permissions
 
@@ -24,14 +23,14 @@ This extension requests two permissions:
 
 ## Output format
 
-The exported annotations will be saved in the chosen format (JSON, CSV or Markdown) with the following structure:
+The exported annotations will be saved in the chosen format with the following structure:
 
 ### JSON
 
 ```json
 {
   "extension": "Google Scholar annotation exporter",
-  "extensionHomepage": "https://chromewebstore.google.com/detail/google-scholar-annotation-expor/ljjlnfclgkldjljjljjljjljjljjljjljj",
+  "extensionHomepage": "https://chromewebstore.google.com/detail/google-scholar-annotation/dkcipnihgbegpammhgkobheodoknplma",
   "extensionVersion": "1.0.0",
   "exportDate": "2023-01-01T12:00:00Z",
   "numberOfPapers": 1,
@@ -76,12 +75,65 @@ Title,Authors,Journal,Year,Link,Citation,Annotations
 Paper Title,"Author 1, Author 2",Journal Name,2023,https://link.to.paper.pdf,"Author 1, Author 2. Paper Title. Journal Name, 2023.","indeed~~~This is a note for the highlighted text.~~~This is the context of the highlighted text indeed.~~~Purple~~~1|||Another highlighted text.~~~~~~~~~Yellow~~~2"
 ```
 
+### LaTeX
+
+```latex
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+
+\title{ Google Scholar annotation exporter }
+\date{ 2023-01-01T12:00:00Z }
+\author{ Google Scholar annotation exporter }
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\section{ Paper Title }
+
+\begin{center}
+  \begin{tabular}{||l l||}
+    \hline
+    \textbf{Field}   & \textbf{Value}                          \\ [0.5ex]
+    \hline\hline
+    \textbf{Authors} & Author 1, Author 2                      \\
+    \hline
+    \textbf{Journal} & Journal Name                            \\
+    \hline
+    \textbf{Year}    & 2023                                    \\
+    \hline
+    \textbf{Link}    & \href{ https://link.to.paper.pdf }{PDF} \\
+    \hline
+  \end{tabular}
+\end{center}
+\subsection{Citation}
+
+Author 1, Author 2, 2023. Paper Title. Journal Name
+
+\subsection{Annotations}
+
+\subsubsection{ indeed. }
+\begin{itemize}
+  \item \textbf{Note}: This is a note for the highlighted text.
+  \item \textbf{Color}: Purple
+  \item \textbf{Page}: 1
+\end{itemize}
+\subsubsection{ Another highlighted text. }
+\begin{itemize}
+  \item \textbf{Color}: Yellow
+  \item \textbf{Page}: 2
+\end{itemize}
+
+\end{document}
+```
+
 ### Markdown
 
 ```markdown
 ---
 extension: Google Scholar annotation exporter
-extension_homepage: https://chromewebstore.google.com/detail/google-scholar-annotation-expor/ljjlnfclgkldjljjljjljjljjljjljjljj
+extension_homepage: https://chromewebstore.google.com/detail/google-scholar-annotation/dkcipnihgbegpammhgkobheodoknplma
 extension_version: 1.0
 export_date: 2023-01-01T12:00:00Z
 number_of_papers: 1
@@ -134,9 +186,16 @@ To contribute to this project, please follow these steps:
    Alternatively, you can use `npm run watch` (or `yarn watch` or `pnpm watch`) to automatically rebuild the project when changes are made.
    You may need to reload the extension in Chrome after rebuilding.
 
+### Updating the output templates
+
+The output produced by this extension is generated using [Handlebars](https://handlebarsjs.com/) templates.
+The templates are located in the `src/templates` folder, and they are compiled into JavaScript files during the build process.
+This is due to the fact that Chrome extensions are [restricted](https://developer.chrome.com/docs/extensions/how-to/security/sandboxing-eval) from using `eval()` and similar functionalities, which are used by Handlebars to compile templates at runtime.
+When the extension is built, the templates are precompiled into JavaScript files that can be used directly by the extension without requiring runtime compilation.
+
 > [!WARNING]  
 > If you are using the `watch` command, please note that the handlebars templates are not automatically recompiled when changes are made to the `.hbs` files.
-> You will need to run the `build` command again to recompile the templates.
+> They will only be compiled once upon running either the `build` or `watch` command.
 
 ## Alternatives
 
