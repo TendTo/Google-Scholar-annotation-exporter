@@ -253,6 +253,22 @@ Offscreen -->> Background: Template output
 Background -->>- Content: Template output
 ```
 
+## Additional details
+
+Some additional details about the development process, the extension's functionality and the design decisions can be found in this [blog post](https://tendto.github.io/en/posts/google-scholar-annotation-exporter/).
+Please, skim through it if you are interested in the technical aspects of this project or you want to contribute to it.
+
+## TODO
+
+- [ ] Allow users to override the PDF links provided by Google Scholar with alternative URLs supplied by them.
+      In practice, this would be a simple `URL => URL` mapping.
+      Whenever a URL about to be used exists as a key in the map, its associated value is used instead.
+- [ ] Create a system capable of bypassing CORS restrictions.
+      This might involve creating an external proxy component, using a service such as [**CORS Anywhere**](https://cors-anywhere.herokuapp.com/), or relying on a service such as [**PDF.co**](https://pdf.co/) to download PDFs.
+- [ ] Allow custom logic during PDF parsing.
+      A particularly delicate and somewhat controversial feature from a security perspective, but potentially useful for advanced users.
+- [ ] Add additional export formats, such as **BibTeX** or **EndNote**.
+
 ## Alternatives
 
 - [Google Scholar Highlights Export](https://chromewebstore.google.com/detail/google-scholar-highlights/dkolmloddjhhdeobedcgcgohoeoeekpj)
