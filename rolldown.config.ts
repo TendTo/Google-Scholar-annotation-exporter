@@ -19,12 +19,9 @@ export default defineConfig((config) => {
         {
           name: "handlebars-and-html-watcher",
           buildStart() {
-            const files: string[] = fs
-              .globSync(path.join(__dirname, "/src/templates/*.hbs"))
-              .concat(fs.globSync(path.join(__dirname, "/src/*.html")));
-            files.forEach((file) => {
-              this.addWatchFile(file);
-            });
+            fs.globSync(path.join(__dirname, "/src/**/*.{html,hbs}")).forEach(
+              this.addWatchFile.bind(this),
+            );
           },
           watchChange(id) {
             if (id.endsWith(".hbs")) build();
