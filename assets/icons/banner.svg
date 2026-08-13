@@ -1,0 +1,41 @@
+<svg viewBox="0 0 1400 560" xmlns="http://www.w3.org/2000/svg" width="1400" height="560">
+  <style>
+    text {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+  
+  <defs>
+    <polygon id="highlight-left" points="20,20 38,25 38,30 20,25" fill="yellow" />
+    <polygon id="highlight-right" points="62,20 80,15 80,20 62,25" fill="yellow" />
+  </defs>
+  <rect x="0" y="0" width="1400" height="560" fill="white" />
+
+  <g transform="translate(100, 50) scale(5)">
+    <rect x="10" y="80" width="75" height="10" fill="#356AC3" />
+    <rect x="11" y="73" width="84" height="7" fill="#4285F4" />
+    <rect x="8" y="65" width="80" height="8" fill="#76A7FA" />
+  </g>
+
+  <g transform="translate(100, 50) scale(5)">
+    <polygon points="49,20,10,10 10,60 49,70" fill="white" stroke="#4285F4" stroke-width="3" />
+    <polygon points="51,20,90,10 90,60 51,70" fill="white" stroke="#4285F4" stroke-width="3" />
+    <rect x="49" y="20" width="2" height="50" fill="#4285F4" stroke="#4285F4" />
+    <use href="#highlight-left" transform="translate(0, 0)" />
+    <use href="#highlight-left" transform="translate(4, 10)" />
+    <use href="#highlight-left" transform="translate(0, 0)" />
+    <use href="#highlight-left" transform="translate(-5, 25)" />
+    <use href="#highlight-left" transform="translate(0, 2) scale(1 1)" />
+    <use href="#highlight-right" transform="translate(3, 20)" />
+    <use href="#highlight-right" transform="translate(-8,14)" />
+    <use href="#highlight-right" transform="translate(0, 0)" />
+    <use href="#highlight-right" transform="translate(5, 35)" />
+  </g>
+
+  <text alignment-baseline="after-edge" text-anchor="start" x="650" y="280" font-size="80" fill="black">
+    Google Scholar
+  </text>
+  <text alignment-baseline="after-edge" text-anchor="start" x="650" y="380" font-size="80" fill="black">
+    annotation exporter
+  </text>
+</svg>

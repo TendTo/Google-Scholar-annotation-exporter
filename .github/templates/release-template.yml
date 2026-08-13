@@ -1,5 +1,5 @@
 # $schema: https://raw.githubusercontent.com/release-drafter/release-drafter/refs/heads/master/schema.json
-name-template: "Release $RESOLVED_VERSION"
+name-template: "Google Scholar annotation exporter $RESOLVED_VERSION"
 tag-template: "$RESOLVED_VERSION"
 template: |
   ## Changes
