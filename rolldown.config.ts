@@ -27,7 +27,6 @@ export default defineConfig((config) => {
             });
           },
           watchChange(id) {
-            console.log(`File changed: ${id}`);
             if (id.endsWith(".hbs")) build();
           },
         },
