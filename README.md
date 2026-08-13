@@ -228,13 +228,13 @@ To contribute to this project, please follow these steps:
    Alternatively, you can use `npm run watch` (or `yarn watch` or `pnpm watch`) to automatically rebuild the project when changes are made.
    You may need to reload the extension in Chrome after rebuilding.
 
-### Updating the output templates
+### Custom output templates
 
 The output produced by this extension is generated using [Handlebars](https://handlebarsjs.com/) templates.
-The templates are located in the `src/templates` folder, and they are compiled into JavaScript files during the build process.
+The templates are located in the [`src/templates`](./src/templates) folder, and they are compiled into JavaScript files during the build process.
 This is due to the fact that Chrome extensions are [restricted](https://developer.chrome.com/docs/extensions/how-to/security/sandboxing-eval) from using `eval()` and similar functionalities, which are used by Handlebars to compile templates at runtime.
-When the extension is built, the templates are precompiled into JavaScript files that can be used directly by the extension without requiring runtime compilation.  
-There is a cumbersome way to use Handlebars templates in a Chrome extension for people who do not want to build the extension, which has been made available in the "Advanced options": it requires to relay the request from the content script, to the background script, to an offscreen script, and finally to a sandboxed iframe.
+The precompiled JavaScript files that can be used directly by the extension without incurring in the security issues.  
+There is a cumbersome way to circumvent the limitation, which has been made available in the "Advanced options": it requires to relay the request from the content script, to the background script, to an offscreen script, and finally to a sandboxed iframe.
 
 ```mermaid
 sequenceDiagram
@@ -252,10 +252,6 @@ destroy Offscreen
 Offscreen -->> Background: Template output
 Background -->>- Content: Template output
 ```
-
-> [!WARNING]  
-> If you are using the `watch` command, please note that the handlebars templates are not automatically recompiled when changes are made to the `.hbs` files.
-> They will only be compiled once upon running either the `build` or `watch` command.
 
 ## Alternatives
 
