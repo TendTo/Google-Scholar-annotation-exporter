@@ -1,10 +1,10 @@
 # <img src="./assets/icons/icon.svg" width="20" height="20"> Google Scholar annotation exporter
 
-Export your [Google Scholar PDF Reader](https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkoodjbpjheillcadbppiidmhp) annotations (highlights and notes) to JSON, CSV, LaTeX, Markdown or custom format.
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-0.0.2-356AC3?labelColor=1E1B7B)](https://chromewebstore.google.com/detail/google-scholar-annotation/dkcipnihgbegpammhgkobheodoknplma)
+[![License](https://img.shields.io/badge/license-MIT-356AC3?labelColor=1E1B7B)](./LICENSE)
+[![Manifest V3](https://img.shields.io/badge/manifest-v3-356AC3?&labelColor=1E1B7B)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 
-> [!NOTE]  
-> The format of the exported data may change in future versions.
-> Please report any issues you encounter.
+Export your [Google Scholar PDF Reader](https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkoodjbpjheillcadbppiidmhp) annotations (highlights and notes) to JSON, CSV, LaTeX, Markdown or custom format.
 
 ## Installation
 
@@ -20,6 +20,7 @@ This extension requests two permissions:
   Without access to those pages, it cannot collect the annotation data that users explicitly choose to export.
 - `Storage`: the extension stores user preferences such as export format and citation style, and it also keeps temporary export state while processing multiple pages.
   This allows the multi-page export flow to continue correctly across navigations and lets the extension remember the user’s settings between sessions and browser (as long as the user has enabled synchronization).
+- `Offscreen`: the extension uses an offscreen document to process custom templates in a sandboxed environment, which is required by Chrome’s security policies for extensions. See the [Custom templates](#custom-templates) section for more information.
 
 ## Output format
 
@@ -171,10 +172,9 @@ number_of_annotations: 2
 ---
 ```
 
-### Custom templates
+### Custom format
 
-Under the hood, Google Scholar annotation exporter uses [Handlebars](https://handlebarsjs.com/) templates to generate the output in the selected format.
-You can customize the output by providing your own Handlebars template in the "Advanced options" modal.
+You can customize the output by providing your own [Handlebars](https://handlebarsjs.com/) template in the "Advanced options" modal.
 The default templates are located in the [`src/templates`](./src/templates) folder, and you can use them as a starting point for your own custom templates.
 For more information on how to use Handlebars templates, please refer to the [Handlebars documentation](https://handlebarsjs.com/guide/).
 
@@ -228,13 +228,13 @@ To contribute to this project, please follow these steps:
    Alternatively, you can use `npm run watch` (or `yarn watch` or `pnpm watch`) to automatically rebuild the project when changes are made.
    You may need to reload the extension in Chrome after rebuilding.
 
-### Custom output templates
+### Custom templates
 
 The output produced by this extension is generated using [Handlebars](https://handlebarsjs.com/) templates.
 The templates are located in the [`src/templates`](./src/templates) folder, and they are compiled into JavaScript files during the build process.
-This is due to the fact that Chrome extensions are [restricted](https://developer.chrome.com/docs/extensions/how-to/security/sandboxing-eval) from using `eval()` and similar functionalities, which are used by Handlebars to compile templates at runtime.
-The precompiled JavaScript files that can be used directly by the extension without incurring in the security issues.  
-There is a cumbersome way to circumvent the limitation, which has been made available in the "Advanced options": it requires to relay the request from the content script, to the background script, to an offscreen script, and finally to a sandboxed iframe.
+This is due to the fact that Chrome extensions are [restricted](https://developer.chrome.com/docs/extensions/how-to/security/sandboxing-eval) from using `eval()` and similar functionalities, which are vital for Handlebars to compile templates at runtime.
+The precompiled JavaScript files that can be used directly by the extension without incurring in any security issue.  
+There is a cumbersome way to circumvent the limitation: it requires to relay the request from the content script, to the background script, to an offscreen script, and finally to a sandboxed iframe.
 
 ```mermaid
 sequenceDiagram

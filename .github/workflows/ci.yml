@@ -61,4 +61,4 @@ jobs:
           client-secret: ${{ secrets.CLIENT_SECRET }}
           refresh-token: ${{ secrets.REFRESH_TOKEN }}
           zip-path: extension.zip
-          action: publish
+          action: upload
