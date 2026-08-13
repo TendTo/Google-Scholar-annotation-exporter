@@ -1,6 +1,6 @@
 # <img src="./assets/icons/icon.svg" width="20" height="20"> Google Scholar annotation exporter
 
-Export your [Google Scholar PDF Reader](https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkoodjbpjheillcadbppiidmhp) annotations (highlights and notes) to a JSON, CSV, LaTeX or Markdown file.
+Export your [Google Scholar PDF Reader](https://chromewebstore.google.com/detail/google-scholar-pdf-reader/dahenjhkoodjbpjheillcadbppiidmhp) annotations (highlights and notes) to JSON, CSV, LaTeX, Markdown or custom format.
 
 > [!NOTE]  
 > The format of the exported data may change in future versions.

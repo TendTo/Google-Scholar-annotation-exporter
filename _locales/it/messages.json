@@ -4,7 +4,7 @@
     "description": "The name of the extension"
   },
   "extension_description": {
-    "message": "Esporta le tue annotazioni del lettore PDF di Google Scholar (evidenziazioni e note) in un file JSON, CSV, LaTeX o Markdown.",
+    "message": "Esporta le tue annotazioni del lettore PDF di Google Scholar (evidenziazioni e note) in JSON, CSV, LaTeX, Markdown o un formato personalizzato.",
     "description": "The description of the extension"
   },
   "stop_exporting": {

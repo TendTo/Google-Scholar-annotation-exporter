@@ -4,6 +4,8 @@ on:
   push:
     branches:
       - main
+    tags:
+      - "*.*.*"
 
 jobs:
   build:
@@ -37,7 +39,11 @@ jobs:
     environment: publish
     if: startsWith(github.ref, 'refs/tags/')
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: read
     steps:
+      - uses: actions/checkout@v7
       - name: Download artifact
         uses: actions/download-artifact@v4
         with:
@@ -47,7 +53,7 @@ jobs:
         with:
           config-name: templates/release-template.yml
       - name: Publish Chrome Extension
-        uses: wdzeng/chrome-extension@src-v2.0.0
+        uses: wdzeng/chrome-extension@v2
         with:
           publisher-id: 4ec42777-23b5-48b7-9868-2aaee3915064
           extension-id: dkcipnihgbegpammhgkobheodoknplma
@@ -55,4 +61,4 @@ jobs:
           client-secret: ${{ secrets.CLIENT_SECRET }}
           refresh-token: ${{ secrets.REFRESH_TOKEN }}
           zip-path: extension.zip
-          action: upload
+          action: publish
