@@ -12,7 +12,7 @@
   "devDependencies": {
     "@types/node": "^26.1.1",
     "chrome-types": "^0.1.434",
-    "handlebars": "^4.7.9",
+    "handlebars": "^4.7.10",
     "pdfjs-serverless": "^1.2.3",
     "rolldown": "^1.1.5",
     "slugify": "^1.6.9",
