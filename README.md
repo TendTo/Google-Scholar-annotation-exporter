@@ -260,6 +260,7 @@ Please, skim through it if you are interested in the technical aspects of this p
 
 ## TODO
 
+- [ ] Add more localization (in particular, Chinese, Japanese, Korean, Russian, Spanish, Portuguese, Arabic)
 - [ ] Allow users to override the PDF links provided by Google Scholar with alternative URLs supplied by them.
       In practice, this would be a simple `URL => URL` mapping.
       Whenever a URL about to be used exists as a key in the map, its associated value is used instead.
