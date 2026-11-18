@@ -1,0 +1,174 @@
+{
+  "extension_name": {
+    "message": "Google 学术批注导出器",
+    "description": "The name of the extension"
+  },
+  "extension_description": {
+    "message": "将 Google 学术 PDF 阅读器中的批注（高亮和笔记）导出为 JSON、CSV、LaTeX、Markdown 或自定义格式。",
+    "description": "The description of the extension"
+  },
+  "stop_exporting": {
+    "message": "停止导出",
+    "description": "Button text to stop exporting"
+  },
+  "stop_exporting_title": {
+    "message": "停止自动导出",
+    "description": "Tooltip for the button to stop exporting"
+  },
+  "export_all_pages": {
+    "message": "导出全部",
+    "description": "Button text to export all pages"
+  },
+  "export_all_pages_title": {
+    "message": "自动转到第 1 页，并按顺序导出所有页面的批注；每次导出后转到下一页。页面较多时，此过程可能需要一些时间。",
+    "description": "Tooltip for the button to export all pages"
+  },
+  "export_selected": {
+    "message": "导出所选论文",
+    "description": "Button text to export selected papers"
+  },
+  "export_selected_title": {
+    "message": "将当前页面中所选论文的批注导出到文件",
+    "description": "Tooltip for the button to export selected papers"
+  },
+  "export_stopped": {
+    "message": "自动导出已停止。",
+    "description": "Alert message when auto-export is stopped"
+  },
+  "export_all_confirmation": {
+    "message": "此操作将自动转到第 1 页，并按顺序导出所有页面的批注。是否开始？",
+    "description": "Confirmation message when exporting all pages"
+  },
+  "export_stop_confirmation": {
+    "message": "确定要停止自动导出吗？",
+    "description": "Confirmation message when stopping auto-export"
+  },
+  "export_no_template": {
+    "message": "尚未设置自定义导出模板。请在高级选项中设置。",
+    "description": "Alert message when no custom export template is set"
+  },
+  "select_all": {
+    "message": "全选",
+    "description": "Button text to select all papers"
+  },
+  "select_all_title": {
+    "message": "选择当前页面中的所有论文",
+    "description": "Tooltip for the button to select all papers"
+  },
+  "deselect_all": {
+    "message": "取消全选",
+    "description": "Button text to deselect all papers"
+  },
+  "deselect_all_title": {
+    "message": "取消选择当前页面中的所有论文",
+    "description": "Tooltip for the button to deselect all papers"
+  },
+  "reset": {
+    "message": "重置",
+    "description": "Button text to reset everything to default"
+  },
+  "reset_title": {
+    "message": "将所有设置恢复为默认值，并取消选择当前页面中的所有论文。可用于从无效状态中恢复（例如，扩展程序发生不兼容的更新后）。",
+    "description": "Tooltip for the button to reset everything to default"
+  },
+  "fetch_context": {
+    "message": "获取上下文",
+    "description": "Label for the checkbox to fetch context"
+  },
+  "fetch_context_title": {
+    "message": "包含高亮内容所在的完整句子，以提供更充分的上下文。此功能可能不适用于所有高亮内容，并且会降低导出速度。",
+    "description": "Tooltip for the checkbox to fetch context"
+  },
+  "export_as": {
+    "message": "导出格式",
+    "description": "Label for export format selection"
+  },
+  "export_as_title": {
+    "message": "选择批注的导出格式",
+    "description": "Tooltip for the label of export format selection"
+  },
+  "citation_style": {
+    "message": "引用格式",
+    "description": "Label for citation style selection"
+  },
+  "citation_style_title": {
+    "message": "选择导出批注所使用的引用格式",
+    "description": "Tooltip for the label of citation style selection"
+  },
+  "advanced_options": {
+    "message": "高级选项",
+    "description": "Button text to open advanced export options"
+  },
+  "advanced_options_title": {
+    "message": "打开高级选项",
+    "description": "Tooltip for the advanced options button"
+  },
+  "advanced_options_help": {
+    "message": "使用自定义 <a href=\"https://handlebarsjs.com/\" target=\"_blank\">Handlebars</a> 模板控制导出内容。可用字段列表请参见<a href=\"https://github.com/TendTo/Google-Scholar-annotation-exporter#custom-templates\" target=\"_blank\">此处</a>，同时也可查看<a href=\"https://github.com/TendTo/Google-Scholar-annotation-exporter/tree/main/src/templates\" target=\"_blank\">默认模板</a>。",
+    "description": "Helper text shown in the advanced options modal"
+  },
+  "custom_template": {
+    "message": "自定义导出模板",
+    "description": "Label for the custom export template textarea"
+  },
+  "custom_template_placeholder": {
+    "message": "示例：{{#each papers}}- {{title}} ({{year}})\\n{{/each}}",
+    "description": "Placeholder text for the custom export template textarea"
+  },
+  "save": {
+    "message": "保存",
+    "description": "Button text to save advanced options"
+  },
+  "cancel": {
+    "message": "取消",
+    "description": "Button text to cancel advanced options changes"
+  },
+  "collect_error_generic": {
+    "message": "导出过程中发生错误。请查看控制台以了解详情。",
+    "description": "Alert message when an error occurs during export"
+  },
+  "collect_error_no_papers_selected": {
+    "message": "请至少选择一篇论文。",
+    "description": "Alert message when no papers are selected for export"
+  },
+  "collect_error_captcha": {
+    "message": "Google 学术要求进行人机验证（CAPTCHA）。请在页面上完成验证，然后刷新页面以继续。",
+    "description": "Alert message when Google Scholar requests a CAPTCHA"
+  },
+  "status_exporting": {
+    "message": "正在读取论文 [$START_COUNT$ - $END_COUNT$]",
+    "description": "Status message when papers are being exported",
+    "placeholders": {
+      "start_count": {
+        "content": "$1",
+        "example": "1"
+      },
+      "end_count": {
+        "content": "$2",
+        "example": "10"
+      }
+    }
+  },
+  "status_captcha": {
+    "message": "已停止：检测到人机验证（CAPTCHA）！请完成验证并刷新页面。",
+    "description": "Status message when CAPTCHA is detected"
+  },
+  "status_next_page": {
+    "message": "正在转到下一页……",
+    "description": "Status message when moving to the next page"
+  },
+  "status_exported": {
+    "message": "已导出 $COUNT$ 篇论文。",
+    "description": "Status message when papers are exported",
+    "placeholders": {
+      "count": {
+        "content": "$1",
+        "example": "5"
+      }
+    }
+  },
+  "untitled_paper": {
+    "message": "无标题论文",
+    "description": "Default title for papers without a title"
+  }
+}
