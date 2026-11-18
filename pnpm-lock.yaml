@@ -30,8 +30,8 @@ importers:
         specifier: ^7.0.2
         version: 7.0.2
       unplugin-raw:
-        specifier: ^0.7.0
-        version: 0.7.0(rolldown@1.3.2)
+        specifier: ^0.8.0
+        version: 0.8.0(rolldown@1.3.2)
 
 packages:
 
@@ -354,9 +354,9 @@ packages:
   undici-types@8.9.0:
     resolution: {integrity: sha512-KTDyRTYX8sWmKXAikPHHSyc63CRPETMctyjKFupcC6OBLXT3xsN0e9aF7m+mIXutFWpUXuedtowG7iLOzp0kQg==}
 
-  unplugin-raw@0.7.0:
-    resolution: {integrity: sha512-YUhRODjYefyC57RjjWTME2G7cAOHEFRM2gncw0yoKYhMIW4EXbo3TmLCMgHONxDAl6SEC6O4EIPlEOt6XrEZiw==}
-    engines: {node: '>=20.19.0'}
+  unplugin-raw@0.8.0:
+    resolution: {integrity: sha512-KUnsbDC5jjOs/ojrPpI1I6AO2u1h6kE02zhLrwNc49QPYiSHuqDnrJjZ7JrsYQa1wdFZNjOBNTC5fgjY1hkeBw==}
+    engines: {node: ^22.18.0 || ^24.11.0 || >=26.0.0}
     peerDependencies:
       esbuild: '>=0.25.0'
     peerDependenciesMeta:
@@ -656,7 +656,7 @@ snapshots:
 
   undici-types@8.9.0: {}
 
-  unplugin-raw@0.7.0(rolldown@1.3.2):
+  unplugin-raw@0.8.0(rolldown@1.3.2):
     dependencies:
       unplugin: 3.7.0(rolldown@1.3.2)
       unplugin-utils: 0.3.2
