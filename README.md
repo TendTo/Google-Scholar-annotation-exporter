@@ -1,6 +1,6 @@
 # <img src="./assets/icons/icon.svg" width="20" height="20"> Google Scholar annotation exporter
 
-[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-0.0.2-356AC3?labelColor=1E1B7B)](https://chromewebstore.google.com/detail/google-scholar-annotation/dkcipnihgbegpammhgkobheodoknplma)
+[![Chrome Web Store](https://img.shields.io/badge/Chrome%20Web%20Store-0.0.3-356AC3?labelColor=1E1B7B)](https://chromewebstore.google.com/detail/google-scholar-annotation/dkcipnihgbegpammhgkobheodoknplma)
 [![License](https://img.shields.io/badge/license-MIT-356AC3?labelColor=1E1B7B)](./LICENSE)
 [![Manifest V3](https://img.shields.io/badge/manifest-v3-356AC3?&labelColor=1E1B7B)](https://developer.chrome.com/docs/extensions/mv3/intro/)
 
