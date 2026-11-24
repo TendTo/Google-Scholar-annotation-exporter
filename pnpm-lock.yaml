@@ -12,8 +12,8 @@ importers:
         specifier: ^26.6.6
         version: 26.6.6
       chrome-types:
-        specifier: ^0.1.464
-        version: 0.1.464
+        specifier: ^0.1.465
+        version: 0.1.465
       handlebars:
         specifier: ^4.7.10
         version: 4.7.10
@@ -300,8 +300,8 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  chrome-types@0.1.464:
-    resolution: {integrity: sha512-mDNDBJBLVf1nqAKWV6PJf17a81h62U/77+TDSpGnYap5qaROc0r92Rxdgy02Dmjn4J/SpB/tOVNvzh7h/TEAeA==}
+  chrome-types@0.1.465:
+    resolution: {integrity: sha512-pbWvxOzinoMkXO9/QyFB2hHHw+mazKSPnU8iATS36frtkPu/3POobzyZNMeFSVShvzGd3i8n/RuKaXmJxee5og==}
 
   handlebars@4.7.10:
     resolution: {integrity: sha512-P5VJMVM7qgBn6vjXMw8WG9uVI+ncf2pi72j4de4yz5ZULLj2RGqLYaKOYGsgyrViQ0tePOVlN1tDCCXXtFqXKg==}
@@ -578,7 +578,7 @@ snapshots:
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
 
-  chrome-types@0.1.464: {}
+  chrome-types@0.1.465: {}
 
   handlebars@4.7.10:
     dependencies:

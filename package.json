@@ -11,7 +11,7 @@
   },
   "devDependencies": {
     "@types/node": "^26.6.6",
-    "chrome-types": "^0.1.464",
+    "chrome-types": "^0.1.465",
     "handlebars": "^4.7.10",
     "pdfjs-serverless": "^2.1.0",
     "rolldown": "^1.3.2",
